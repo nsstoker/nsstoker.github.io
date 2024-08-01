@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+    <head>
+        <title>HTTPS to SMS</title>
+    </head>
+    <body>
+<form>
+  <label for="TextMessage">TextMessage:</label>
+  <input type="text" id="TextMessage" name="TextMessage">
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>
