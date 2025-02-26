@@ -2,6 +2,38 @@
 <html>
 <head>
     <title>Messenger ETA Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: block;
+            width: 80%;
+            max-width: 300px;
+            padding: 15px;
+            margin: 10px auto;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
     <script>
         function sendSMS(timeRange) {
             const urlParams = new URLSearchParams(window.location.search);
@@ -12,7 +44,7 @@
                 return;
             }
 
-            let message = `I am on my way and should be there in about ${timeRange}. See you soon!`;
+            let message = `Hello! I am on my way and should arrive in ${timeRange}. See you soon!`;
 
             // Open SMS app with the selected message
             window.location = `sms://+${tel};?&body=${encodeURIComponent(message)}`;
@@ -21,10 +53,10 @@
 </head>
 <body>
     <h2>Select Your ETA:</h2>
-    <button onclick="sendSMS('5-10 minutes')">5-10 minutes</button>
-    <button onclick="sendSMS('10-15 minutes')">10-15 minutes</button>
-    <button onclick="sendSMS('15-30 minutes')">15-30 minutes</button>
-    <button onclick="sendSMS('30-45 minutes')">30-45 minutes</button>
-    <button onclick="sendSMS('45-60 minutes')">45-60 minutes</button>
+    <button class="btn" onclick="sendSMS('5-10 minutes')">5-10 minutes</button>
+    <button class="btn" onclick="sendSMS('10-15 minutes')">10-15 minutes</button>
+    <button class="btn" onclick="sendSMS('15-30 minutes')">15-30 minutes</button>
+    <button class="btn" onclick="sendSMS('30-45 minutes')">30-45 minutes</button>
+    <button class="btn" onclick="sendSMS('45-60 minutes')">45-60 minutes</button>
 </body>
 </html>
