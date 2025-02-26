@@ -44,7 +44,7 @@
                 return;
             }
 
-            let message = `Hello! I am on my way and should arrive in ${timeRange}. See you soon!`;
+            let message = `Hello! I am on my way and should be there ${timeRange}. See you soon!`;
 
             // Open SMS app with the selected message
             window.location = `sms://+${tel};?&body=${encodeURIComponent(message)}`;
@@ -53,10 +53,11 @@
 </head>
 <body>
     <h2>Select Your ETA:</h2>
-    <button class="btn" onclick="sendSMS('5-10 minutes')">5-10 minutes</button>
-    <button class="btn" onclick="sendSMS('10-15 minutes')">10-15 minutes</button>
-    <button class="btn" onclick="sendSMS('15-30 minutes')">15-30 minutes</button>
-    <button class="btn" onclick="sendSMS('30-45 minutes')">30-45 minutes</button>
-    <button class="btn" onclick="sendSMS('45-60 minutes')">45-60 minutes</button>
+    <button class="btn" onclick="sendSMS('in about 5-10 minutes')">5-10 minutes</button>
+    <button class="btn" onclick="sendSMS('in about 10-15 minutes')">10-15 minutes</button>
+    <button class="btn" onclick="sendSMS('in about 15-30 minutes')">15-30 minutes</button>
+    <button class="btn" onclick="sendSMS('in about 30-45 minutes')">30-45 minutes</button>
+    <button class="btn" onclick="sendSMS('in about 45-60 minutes')">45-60 minutes</button>
+    <button class="btn" onclick="sendSMS('shortly')">45-60 minutes</button>
 </body>
 </html>
