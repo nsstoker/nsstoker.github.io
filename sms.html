@@ -1,31 +1,30 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>HTTPS to SMS</title>
-    </head>
-    <body>
-        <script>
-            // Based on https://stackoverflow.com/a/901144/1652620
-            const urlSearchParams = new URLSearchParams(window.location.search);
-            const params = Object.fromEntries(urlSearchParams.entries());
+<head>
+    <title>Messenger ETA Selector</title>
+    <script>
+        function sendSMS(timeRange) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tel = urlParams.get("tel");
 
-            function getParameterByName(name, url = window.location.href) {
-                name = name.replace(/[\[\]]/g, '\\$&');
-                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-                    results = regex.exec(url);
-                if (!results) return null;
-                if (!results[2]) return '';
-                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            if (!tel) {
+                alert("Phone number is missing!");
+                return;
             }
 
-            var tel = getParameterByName('tel');
-            var body = getParameterByName('body');
+            let message = `Hello! I am on my way and should arrive in ${timeRange}. See you soon!`;
 
-            // Based on https://stackoverflow.com/a/4745622/1652620
-            if (tel != "" && tel != null) {
-                window.location = "sms://+" + tel + ";?&body=" + body;
-            }
-        </script>
-    </body>
+            // Open SMS app with the selected message
+            window.location = `sms://+${tel};?&body=${encodeURIComponent(message)}`;
+        }
+    </script>
+</head>
+<body>
+    <h2>Select Your ETA:</h2>
+    <button onclick="sendSMS('5-10 minutes')">5-10 minutes</button>
+    <button onclick="sendSMS('10-15 minutes')">10-15 minutes</button>
+    <button onclick="sendSMS('15-30 minutes')">15-30 minutes</button>
+    <button onclick="sendSMS('30-45 minutes')">30-45 minutes</button>
+    <button onclick="sendSMS('45-60 minutes')">45-60 minutes</button>
+</body>
 </html>
