@@ -12,7 +12,7 @@
                 return;
             }
 
-            let message = `Hello! I am on my way and should arrive in ${timeRange}. See you soon!`;
+            let message = `Hello! I am on my way and should be there in about ${timeRange}. See you soon!`;
 
             // Open SMS app with the selected message
             window.location = `sms://+${tel};?&body=${encodeURIComponent(message)}`;
