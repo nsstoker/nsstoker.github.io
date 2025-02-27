@@ -28,36 +28,54 @@
             border-radius: 10px;
             cursor: pointer;
             transition: background 0.3s ease;
+            touch-action: manipulation;
         }
 
         .btn:hover {
             background-color: #0056b3;
         }
+
+        @media (max-width: 400px) {
+            .btn {
+                font-size: 18px;
+                padding: 12px;
+            }
+        }
     </style>
     <script>
         function sendSMS(timeRange) {
             const urlParams = new URLSearchParams(window.location.search);
-            const tel = urlParams.get("tel");
+            let tel = urlParams.get("tel");
 
             if (!tel) {
                 alert("Phone number is missing!");
                 return;
             }
 
-            let message = `Hello! I am on my way and should be there ${timeRange}. See you soon!`;
+            let message = `I am on my way and should be there ${timeRange}. '-LG Direct Service Technician'`;
 
-            // Open SMS app with the selected message
-            window.location = `sms://+${tel};?&body=${encodeURIComponent(message)}`;
+            // Encode phone number and message for URL safety
+            tel = encodeURIComponent(tel);
+            message = encodeURIComponent(message);
+
+            // Open SMS app with formatted message
+            window.location = `sms:+${tel}?&body=${message}`;
+
+            // Delay before closing to ensure SMS app opens
+            setTimeout(() => {
+                window.close();
+            }, 500);
         }
     </script>
 </head>
 <body>
     <h2>Select Your ETA:</h2>
-    <button class="btn" onclick="sendSMS('in about 5-10 minutes')">in about 5-10 minutes</button>
-    <button class="btn" onclick="sendSMS('in about 10-15 minutes')">in about 10-15 minutes</button>
-    <button class="btn" onclick="sendSMS('in about 15-30 minutes')">in about 15-30 minutes</button>
-    <button class="btn" onclick="sendSMS('in about 30-45 minutes')">in about 30-45 minutes</button>
-    <button class="btn" onclick="sendSMS('in about 45-60 minutes')">in about 45-60 minutes</button>
-    <button class="btn" onclick="sendSMS('shortly')">shortly</button>
+    <button class="btn" onclick="sendSMS('in about 5-10 minutes')">In about 5-10 minutes</button>
+    <button class="btn" onclick="sendSMS('in about 10-15 minutes')">In about 10-15 minutes</button>
+    <button class="btn" onclick="sendSMS('in about 15-30 minutes')">In about 15-30 minutes</button>
+    <button class="btn" onclick="sendSMS('in about 30-45 minutes')">In about 30-45 minutes</button>
+    <button class="btn" onclick="sendSMS('in about 45-60 minutes')">In about 45-60 minutes</button>
+    <button class="btn" onclick="sendSMS('shortly')">Shortly</button>
 </body>
 </html>
+
